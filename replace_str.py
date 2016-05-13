@@ -1,4 +1,4 @@
-print("==== find str ====")
+print("==== replace str ====")
 
 
 def find_str(paragraph, word, start=0, end=None, model='one'):
@@ -42,5 +42,18 @@ def find_str(paragraph, word, start=0, end=None, model='one'):
         return -1
 
 
+def replace_str(paragraph, word1, word2, start=0, end=None, model='all'):
+    index_list = find_str(paragraph, word1, model='all')
+    word1_len = len(word1)
+
+    slice_list = []
+    for index in index_list:
+        slice_list.append(index)
+        slice_list.append(index+word1_len)
+
+    head = slice[0]
+    tail = slice[-1]
+    slice_new = slice[1:-1]
+    
 if __name__ == '__main__':
-    print(find_str('THis is my word word word word', 'word', model="all"))
+    print(replace_str('THis is my word word word word', 'word', model="all"))
